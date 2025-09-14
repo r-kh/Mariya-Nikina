@@ -7,7 +7,7 @@
 }
 
 body {
-    padding-top: 80px; /* равен высоте header иначе может «уехать» вверх под header, потому что header теперь не участвует в обычном потоке документа */
+    padding-top: 100px; /* равен высоте header иначе может «уехать» вверх под header, потому что header теперь не участвует в обычном потоке документа */
     margin: 0;
     background-color: #ffffff; /* белый фон */
     font-family: 'FuturaBook', sans-serif;
@@ -37,13 +37,56 @@ header {
 
 /* Слайдшоу */
 .slideshow {
-    position: fixed;
-    top: 80px; /* сразу под header */
-    left: 0;
     width: 100%;
-    height: calc(100vh - 80px); /* оставшееся место экрана */
+    height: 720px;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden; /* Важный момент! */
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
     background-size: cover;
     background-position: center;
-    transition: background-image 1s ease-in-out;
-    z-index: -1; /* чтобы было под header */
+    animation: zoom 20s ease-in-out infinite;
+    transition: background-image 1s ease-in-out; /* добавлено для плавной смены */
+}
+
+@keyframes zoom {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.projects {
+    padding: 20px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+    gap: 20px; /* расстояние между кубиками */
+}
+
+.project {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project img {
+    width: 100%;
+    display: block;
+    height: auto;
+}
+
+/* Эффект при наведении */
+.project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
