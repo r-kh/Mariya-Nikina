@@ -1,0 +1,49 @@
+/* Подключаем локальный шрифт */
+@font-face {
+    font-family: 'FuturaBook';
+    src: url('futurabookctt-normal.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    padding-top: 80px; /* равен высоте header иначе может «уехать» вверх под header, потому что header теперь не участвует в обычном потоке документа */
+    margin: 0;
+    background-color: #ffffff; /* белый фон */
+    font-family: 'FuturaBook', sans-serif;
+}
+
+header {
+    position: fixed;   /* фиксируем шапку */
+    top: 0;            /* привязка к верхней части экрана */
+    left: 0;           /* привязка к левому краю */
+    width: 100%;
+    height: 100px;
+    background-color: #000000; /* черный */
+    display: flex;
+    align-items: center;
+    padding-left: 100px; /* немного отступа слева */
+    box-sizing: border-box;
+    z-index: 1000;     /* чтобы header был поверх остального контента */
+}
+
+
+.logo {
+    color: #ffffff; /* текст белый */
+    font-size: 19px; /* достаточно крупно */
+    letter-spacing: 0.15em; /* создаёт «воздух» между буквами */
+    text-transform: uppercase; /* все буквы большие */
+}
+
+/* Слайдшоу */
+.slideshow {
+    position: fixed;
+    top: 80px; /* сразу под header */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 80px); /* оставшееся место экрана */
+    background-size: cover;
+    background-position: center;
+    transition: background-image 1s ease-in-out;
+    z-index: -1; /* чтобы было под header */
+}
