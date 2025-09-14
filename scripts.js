@@ -27,3 +27,6 @@ changeBackground();
 
 // каждые 3 секунды меняем картинку
 setInterval(changeBackground, 4500);
+
+// для задания текущего года в футере
+document.getElementById('current-year').textContent = new Date().getFullYear();
