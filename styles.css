@@ -91,6 +91,65 @@ header {
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
+
+/* Секция аккордеона */
+.info-blocks {
+    padding: 40px;
+    background: #353535;
+    color: #fff;
+    border-radius: 12px;
+    margin: 40px auto;
+    max-width: 900px;
+}
+
+.info-blocks h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    /*font-family: 'Cormorant Garamond', serif;*/
+    font-size: 2rem;
+}
+
+.accordion-item {
+    border-bottom: 1px solid #555;
+}
+
+.accordion-header {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    /*font-family: 'Montserrat', sans-serif;*/
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion-header::after {
+    content: "+";
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.accordion-header.active::after {
+    transform: rotate(45deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    padding: 0 15px;
+}
+
+.accordion-content.open {
+    max-height: 700px; /* макс высота разворачиваемого контента контент */
+    padding: 15px;
+}
+
 footer {
     padding: 20px;
     text-align: center;
