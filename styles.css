@@ -7,7 +7,7 @@
 }
 
 body {
-    padding-top: 100px; /* равен высоте header иначе может «уехать» вверх под header, потому что header теперь не участвует в обычном потоке документа */
+    padding-top: 70px; /* равен высоте header иначе может «уехать» вверх под header, потому что header теперь не участвует в обычном потоке документа */
     margin: 0;
     background-color: #ffffff; /* белый фон */
     font-family: 'FuturaBook', sans-serif;
@@ -18,15 +18,49 @@ header {
     top: 0;            /* привязка к верхней части экрана */
     left: 0;           /* привязка к левому краю */
     width: 100%;
-    height: 100px;
+    height: 70px;
     background-color: #000000; /* черный */
     display: flex;
     align-items: center;
-    padding-left: 100px; /* немного отступа слева */
+    padding-left: 50px; /* немного отступа слева */
     box-sizing: border-box;
     z-index: 1000;     /* чтобы header был поверх остального контента */
 }
 
+
+header .container {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;       /* центрирование */
+    padding: 0 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+.logo {
+    display: flex;
+    align-items: baseline; /* выравнивание по нижней линии */
+    gap: 10px; /* расстояние между картинкой и текстом */
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.logo img {
+    height: 40px; /* подгони размер под дизайн */
+    width: auto;
+}
+
+
+.logo span {
+    position: relative;
+    top: -2px; /* подними текст на 2px вверх */
+}
 
 .logo {
     color: #ffffff; /* текст белый */
@@ -38,8 +72,9 @@ header {
 /* Слайдшоу */
 .slideshow {
     width: 100%;
-    height: 720px;
-    margin-top: 20px;
+    max-width: 1280px;   /* ограничение по ширине (попробовано несколько, этот размер для FullHD При 125% наилучший) */
+    height: 640px;      /* ограничение по высоте (попробовано несколько, этот размер для FullHD При 125% наилучший) */
+    margin: 20px auto;   /* auto по бокам = центрирование */
     position: relative;
     overflow: hidden; /* Важный момент! */
 }
@@ -60,20 +95,24 @@ header {
 }
 
 .projects {
-    padding: 20px 20px;
-    max-width: 1200px;
+    /*padding: 20px 20px;*/
+    max-width: 1280px;
     margin: 0 auto;
 }
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+    grid-template-columns: repeat(4, 1fr); /* 3 колонки */
     gap: 20px; /* расстояние между кубиками */
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project {
+    position: relative; /* важно для абсолютного позиционирования названия */
     background-color: #f0f0f0;
-    border-radius: 10px;
+    border-radius: 0px;
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -85,10 +124,30 @@ header {
     height: auto;
 }
 
+
+.project-title {
+    position: absolute;
+    bottom: 0; /* снизу блока */
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5); /* полупрозрачный черный фон */
+    color: #fff;
+    padding: 8px 10px;
+    font-size: 1rem;
+    text-align: center;
+    box-sizing: border-box;
+    transition: background 0.3s ease;
+}
+
+
 /* Эффект при наведении */
 .project:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.project:hover .project-title {
+    background: rgba(0, 0, 0, 0.7); /* затемнение при наведении */
 }
 
 
@@ -156,4 +215,69 @@ footer {
     background-color: #000;
     color: #fff;
     font-family: 'FuturaBook', sans-serif;
+}
+
+
+/* Стрелки в виде боковых панелей */
+.nav {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 60px; /* ширина боковой панели */
+    background: rgba(255, 255, 255, 0.1); /* светлая полупрозрачная */
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+    z-index: 10;
+}
+
+.nav:hover {
+    background: rgba(0, 0, 0, 0.3); /* затемнение при наведении */
+}
+
+.nav.prev {
+    left: 0;
+}
+
+.nav.next {
+    right: 0;
+}
+
+/* Чтобы стрелки выглядели аккуратно */
+.nav:focus {
+    outline: none;
+}
+
+/* Точки */
+.dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.dots button {
+    width: 14px;
+    height: 14px;
+    border-radius: 2px; /* лёгкое скругление, если хочешь идеально квадратные — поставь 0 */
+    border: none;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.dots button:hover {
+    background: rgba(255,255,255,0.8);
+    transform: scale(1.1); /* небольшой ховер-эффект */
+}
+
+.dots button.active {
+    background: white;
 }
