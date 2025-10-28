@@ -280,12 +280,9 @@
 
         </div>
     </section>
-
-
-    <footer>
-        <div class="footer-text">© 2013 - <span id="current-year"></span> MN Portfolio</div>
-    </footer>
 </div>
+
+<div id="footer-container"></div>
 
 <!-- Загружаем header -->
 <script>
@@ -294,7 +291,19 @@ async function loadHeader() {
     const html = await resp.text();
     document.getElementById('header-container').innerHTML = html;
 }
+
+async function loadFooter() {
+    const resp = await fetch('footer.html');
+    const html = await resp.text();
+    document.getElementById('footer-container').innerHTML = html;
+
+    // обновляем год после загрузки футера
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+}
+
 loadHeader();
+loadFooter();
+
 </script>
 
 <script src="scripts.js"></script>

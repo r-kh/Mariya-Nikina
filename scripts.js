@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
         'images/16.jpg',
         'images/17.jpg',
         'images/18.jpg',
-        // 'images/19.jpg',
+        'images/19.jpg',
         'images/20.jpg',
         'images/21.jpg',
         'images/22.jpg',
@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
     startAutoChange();
 
     // футер
-    document.getElementById('current-year').textContent = new Date().getFullYear();
+    // document.getElementById('current-year').textContent = new Date().getFullYear();
 
     // аккордеон
     headers.forEach(header => {

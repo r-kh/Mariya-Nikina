@@ -23,6 +23,7 @@ header {
     display: flex;
     align-items: center;
     padding-left: 50px; /* немного отступа слева */
+    padding-right: 50px; /* немного отступа справа */
     box-sizing: border-box;
     z-index: 1000;     /* чтобы header был поверх остального контента */
 }
@@ -36,6 +37,17 @@ header .container {
     box-sizing: border-box;
     display: flex;
     align-items: center;
+    justify-content: space-between; /* чтобы логотип слева, телефон справа */
+}
+
+.header-phone a {
+    color: #ffffff;      /* белый цвет */
+    font-size: 16px;     /* чуть меньше логотипа */
+    text-decoration: none; /* без подчеркивания */
+    letter-spacing: 0.05em;
+    position: relative;
+    top: 10px; /* выравнивание по базовой линии с логотипом */
+    margin-right: 30px; /* новый отступ слева */
 }
 
 
@@ -49,6 +61,7 @@ header .container {
     font-size: 16px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
+    margin-left: 30px; /* новый отступ слева */
 }
 
 .logo img {
@@ -69,12 +82,20 @@ header .container {
     text-transform: uppercase; /* все буквы большие */
 }
 
+.logo a {
+    display: flex;
+    align-items: baseline; /* по нижней линии */
+    gap: 10px;
+    color: #ffffff;
+    text-decoration: none; /* убираем подчеркивание */
+}
+
 /* Слайдшоу */
 .slideshow {
     width: 100%;
     max-width: 1280px;   /* ограничение по ширине (попробовано несколько, этот размер для FullHD При 125% наилучший) */
     height: 640px;      /* ограничение по высоте (попробовано несколько, этот размер для FullHD При 125% наилучший) */
-    margin: 20px auto;   /* auto по бокам = центрирование */
+    margin: auto;   /* auto по бокам = центрирование */
     position: relative;
     overflow: hidden; /* Важный момент! */
 }
@@ -97,7 +118,7 @@ header .container {
 .projects {
     /*padding: 20px 20px;*/
     max-width: 1280px;
-    margin: 0 auto;
+        margin: 20px auto 0 auto; /* 20px сверху, 0 снизу, auto слева и справа */
 }
 
 .project-grid {
@@ -311,4 +332,45 @@ footer {
     margin: 0 auto 20px;
     line-height: 1.6;
     text-align: justify;
+}
+
+/* Скрываем телефон на экранах меньше 768px (мобильные) */
+@media (max-width: 640px) {
+    .header-phone {
+        display: none;
+    }
+    .header-phone a {
+        margin-right: 0px; /* новый отступ слева */
+    }
+
+    .logo {
+        font-size: 16px; /* уменьшаем шрифт логотипа */
+        margin-left: 0px; /* новый отступ слева */
+    }
+    .logo span {
+        top: -1px; /* подними текст на 1px вверх */
+    }
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr); /* 3 колонки */
+    }
+    .slideshow {
+        width: 100%;           /* максимально по ширине экрана */
+        height: auto;          /* высота под aspect-ratio */
+        aspect-ratio: 16 / 9;  /* сохраняем пропорции 16:9 */
+        margin: 0 auto 20px;   /* центрируем слайдшоу и добавляем отступ снизу */
+    }
+
+    .slide {
+        height: 100%;          /* растягиваем слайд по контейнеру */
+    }
+
+    .dots {
+        gap: 2px;
+    }
+
+    .dots button {
+        width: 6px;
+        height: 6px;
+        /*border-radius: 50%;     !* круги вместо квадратов *!*/
+    }
 }
