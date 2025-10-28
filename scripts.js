@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const dotsContainer = document.querySelector('.dots');
 
     const images = [
-        'images/1.jpg',
+        // 'images/1.jpg',
         'images/2.jpg',
         'images/3.jpg',
         'images/4.jpg',
@@ -66,6 +66,15 @@ document.addEventListener("DOMContentLoaded", () => {
         'images/12.jpg',
         'images/13.jpg',
         'images/14.jpg',
+        'images/15.jpg',
+        'images/16.jpg',
+        'images/17.jpg',
+        'images/18.jpg',
+        // 'images/19.jpg',
+        'images/20.jpg',
+        'images/21.jpg',
+        'images/22.jpg',
+        'images/23.jpg',
     ];
 
     // --- Предзагрузка изображений ---

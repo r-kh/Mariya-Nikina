@@ -22,17 +22,7 @@
 
 <body>
 
-<!-- Шапка сайта с логотипом и названием -->
-<header>
-    <div class="container">
-
-        <div class="logo">
-            <img src="images/logo.png" alt="Логотип">
-            <!-- alt — текст при отсутствии изображения и для доступности -->
-            <span>Мария Никина</span>
-        </div>
-    </div>
-</header>
+<div id="header-container"></div>
 
 
 <div class="container">
@@ -54,54 +44,54 @@
     <!-- Секция с кубиками проектов -->
     <section class="projects">
         <div class="project-grid">
-            <div class="project">
+            <a class="project" href="project.html?id=1">
                 <img src="images/1.jpg" alt="Проект 1">
                 <div class="project-title">Автосалон Skoda</div>
-            </div>
-            <div class="project">
+            </a>
+            <a class="project" href="project.html?id=2">
                 <img src="images/2.jpg" alt="Проект 2">
                 <div class="project-title">Воскресенское</div>
-            </div>
-            <div class="project">
+            </a>
+            <a class="project" href="project.html?id=3">
                 <img src="images/3.jpg" alt="Проект 3">
-                <div class="project-title">Вешки</div>
-            </div>
-            <div class="project">
+                <div class="project-title">Мосфильмовская</div>
+            </a>
+            <a class="project" href="project.html?id=4">
                 <img src="images/4.jpg" alt="Проект 4">
                 <div class="project-title">Грига</div>
-            </div>
-            <div class="project">
+            </a>
+            <a class="project" href="project.html?id=5">
                 <img src="images/5.jpg" alt="Проект 5">
                 <div class="project-title">Нагорная</div>
-            </div>
-            <div class="project">
+            </a>
+            <a class="project" href="project.html?id=6">
                 <img src="images/6.jpg" alt="Проект 6">
                 <div class="project-title">Наметкина</div>
-            </div>
-            <div class="project">
+            </a>
+            <a class="project" href="project.html?id=7">
                 <img src="images/7.jpg" alt="Проект 7">
                 <div class="project-title">Рогова</div>
-            </div>
-            <div class="project">
+            </a>
+            <a class="project" href="project.html?id=8">
                 <img src="images/8.jpg" alt="Проект 8">
                 <div class="project-title">Сервантеса</div>
-            </div>
-            <div class="project">
+            </a>
+            <a class="project" href="project.html?id=9">
                 <img src="images/9.jpg" alt="Проект 9">
                 <div class="project-title">Твардовского</div>
-            </div>
-            <div class="project">
+            </a>
+            <a class="project" href="project.html?id=10">
                 <img src="images/10.jpg" alt="Проект 10">
-                <div class="project-title">Мосфильмовская</div>
-            </div>
-            <div class="project">
+                <div class="project-title">Вешки</div>
+            </a>
+            <a class="project" href="project.html?id=11">
                 <img src="images/11.jpg" alt="Проект 11">
                 <div class="project-title">Санкт-Петербург</div>
-            </div>
-            <div class="project">
+            </a>
+            <a class="project" href="project.html?id=12">
                 <img src="images/12.jpg" alt="Проект 12">
                 <div class="project-title">Истра</div>
-            </div>
+            </a>
         </div>
     </section>
 
@@ -296,6 +286,16 @@
         <div class="footer-text">© 2013 - <span id="current-year"></span> MN Portfolio</div>
     </footer>
 </div>
+
+<!-- Загружаем header -->
+<script>
+async function loadHeader() {
+    const resp = await fetch('header.html');
+    const html = await resp.text();
+    document.getElementById('header-container').innerHTML = html;
+}
+loadHeader();
+</script>
 
 <script src="scripts.js"></script>
 </body>
